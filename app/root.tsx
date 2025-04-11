@@ -1,5 +1,6 @@
 import {
   Links,
+  Link,
   Meta,
   Outlet,
   Scripts,
@@ -32,7 +33,17 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
+        <header className="flex w-screen items-center justify-center bg-blue-600 text-white p-4">
+          <Link 
+            to={`/`}
+            rel="noreferrer"
+          >
+            <h1 className="text-xl">Mi Super App con Remix</h1>
+          </Link>
+        </header>
+        <main className="p-4">
+          {children}
+        </main>
         <ScrollRestoration />
         <Scripts />
       </body>

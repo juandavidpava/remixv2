@@ -1,0 +1,38 @@
+Folder PATH listing
+Volume serial number is 16D7-B992
+C:.
+|   .eslintrc.cjs
+|   .gitignore
+|   estructura_proyecto.txt
+|   package-lock.json
+|   package.json
+|   postcss.config.js
+|   README.md
+|   tailwind.config.ts
+|   tsconfig.json
+|   vite.config.ts
+|   
++---app
+|   |   entry.client.tsx
+|   |   entry.server.tsx
+|   |   root.tsx
+|   |   tailwind.css
+|   |   
+|   \---routes
+|       |   about.tsx
+|       |   contact.tsx
+|       |   users.tsx
+|       |   _index.tsx
+|       |   
+|       \---users
+|               $userId.tsx
+|               
++---node_modules
+| 
+| 
+| 
+| 
+\---public
+        favicon.ico
+        logo-dark.png
+        logo-light.png
