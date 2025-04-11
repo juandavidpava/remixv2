@@ -5,6 +5,7 @@ import {
   Link,
   useRouteError,
   isRouteErrorResponse,
+  Outlet,
 } from "@remix-run/react";
 
 
@@ -20,6 +21,7 @@ export default function UsersPage() {
 
   return (
     <div>
+      <Link to={`/users/new`}>Create User</Link>
       <h1>Users List</h1>
       <ul>
         {users.map((user: any) => (
@@ -28,6 +30,9 @@ export default function UsersPage() {
           </li>
         ))}
       </ul>
+      <div className="text-2xl font-bold mt-4 bg-gray-100 bg-opacity-70 p-2 rounded">
+        <Outlet/>
+      </div>
     </div>
   );
 }
