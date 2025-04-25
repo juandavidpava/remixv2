@@ -1,5 +1,5 @@
 import { LoaderFunction, ActionFunction, redirect } from "@remix-run/node";
-import { Form, useLoaderData } from "@remix-run/react";
+import { Form, Link, useLoaderData } from "@remix-run/react";
 import { getUser, updateUser, deleteUser } from "./api/user";
 
 // Loader para cargar el usuario
@@ -38,13 +38,7 @@ export default function UserDetailPage() {
   return (
     <div className="p-6 space-y-4">
       <h2 className="text-2xl font-bold">Perfil de {user.name}</h2>
-      <p><strong>Email:</strong> {user.email}</p>
-      <p><strong>Teléfono:</strong> {user.phone}</p>
-      <p><strong>Ciudad:</strong> {user.address.city}</p>
-
-      <h3 className="text-xl font-semibold mt-6">Editar usuario</h3>
       <Form method="post" className="space-y-2">
-        <input type="hidden" name="_method" value="put" />
         <div>
           <label>Nombre: </label>
           <input type="text" name="name" defaultValue={user.name} />
@@ -57,6 +51,7 @@ export default function UserDetailPage() {
           <label>Teléfono: </label>
           <input type="text" name="phone" defaultValue={user.phone} />
         </div>
+        <input type="hidden" name="_method" value="put" />
         <button type="submit">Actualizar</button>
       </Form>
 
@@ -64,6 +59,9 @@ export default function UserDetailPage() {
         <input type="hidden" name="_method" value="delete" />
         <button type="submit" className="text-red-600">Eliminar usuario</button>
       </Form>
+      <Link to={`notes`}>
+        View Notes 
+      </Link>
     </div>
   );
 }

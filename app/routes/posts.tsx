@@ -11,7 +11,7 @@ export default function Posts() {
 
   return (
     <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Lista de Posts</h1>
+      <h1 className="text-2xl font-bold mb-4">Lista de Properties</h1>
       <ul className="space-y-2">
         {posts.map((post: any) => (
           <li key={post.id}>

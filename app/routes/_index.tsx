@@ -27,12 +27,10 @@ export default function Index() {
                 <Link
                   to={href}
                   className="group flex items-center gap-3 self-stretch p-3 leading-normal text-blue-700 hover:underline dark:text-blue-500"
-                  
                 >
                   {icon}
                   {text}
                 </Link>
-
               </li>
             ))}
           </ul>
@@ -66,7 +64,7 @@ const resources = [
   },
   {
     href: "/posts",
-    text: "Posts",
+    text: "Properties",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"

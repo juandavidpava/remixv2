@@ -38,7 +38,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             to={`/`}
             rel="noreferrer"
           >
-            <h1 className="text-xl">Mi Super App con Remix</h1>
+            <h1 className="text-xl">OCTOPLUX</h1>
           </Link>
         </header>
         <main className="p-4">
