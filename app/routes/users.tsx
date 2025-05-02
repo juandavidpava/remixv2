@@ -7,13 +7,17 @@ import {
   isRouteErrorResponse,
   Outlet,
 } from "@remix-run/react";
+import { requireUserSession } from "~/utils/session.server";
+
 
 
 // ✅ Loader que obtiene los usuarios
-export const loader: LoaderFunction = async () => {
-  const users = await getUsers(); // Si esto falla, se captura abajo
+export const loader: LoaderFunction = async ({ request }) => {
+  await requireUserSession(request); // 🔐 Protege la ruta
+  const users = await getUsers();
   return users;
 };
+
 
 // ✅ Componente principal
 export default function UsersPage() {

@@ -1,5 +1,16 @@
-import type { MetaFunction } from "@remix-run/node";
-import { Link } from "@remix-run/react";
+import { ActionFunction, LoaderFunction, MetaFunction } from "@remix-run/node";
+import { useLoaderData, Link, Form } from "@remix-run/react";
+import { getSession } from "~/utils/session.server";
+import { logout } from "~/utils/session.server";
+
+export const loader: LoaderFunction = async ({ request }) => {
+  const user = await getSession(request);
+  return { user };
+};
+
+export const action: ActionFunction = async ({ request }) => {
+  return logout(request);
+};
 
 export const meta: MetaFunction = () => {
   return [
@@ -9,6 +20,8 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
+  const { user } = useLoaderData<typeof loader>();
+
   return (
     <div className="flex h-screen justify-center">
       <div className="flex flex-col items-center gap-16">
@@ -18,12 +31,18 @@ export default function Index() {
           </h1>
         </header>
         <div>
-          <Link
-            to='login'
-            className="group flex items-center gap-3 self-stretch p-3 leading-normal text-blue-700 hover:underline dark:text-blue-500"
-          >
-            Sing In
-          </Link>
+          {user ? (
+            <Form method="post">
+              <button type="submit">Sign Out</button>
+            </Form>
+          ) : (
+            <Link
+              to="/login"
+              className="group flex items-center gap-3 self-stretch p-3 leading-normal text-blue-700 hover:underline dark:text-blue-500"
+            >
+              Sign In
+            </Link>
+          )}
         </div>
         <nav className="flex flex-col items-center justify-center gap-4 rounded-3xl border border-gray-200 p-6 dark:border-gray-700">
           <p className="leading-6 text-gray-700 dark:text-gray-200">
